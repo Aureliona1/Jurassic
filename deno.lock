@@ -1,0 +1,33 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@aurellis/helpers@^1.7.0": "1.7.0",
+    "jsr:@std/internal@^1.0.14": "1.0.14",
+    "jsr:@std/media-types@^1.1.0": "1.1.0",
+    "jsr:@std/path@^1.1.6": "1.1.6"
+  },
+  "jsr": {
+    "@aurellis/helpers@1.7.0": {
+      "integrity": "0c55609c4aaf1937569c389f8d4660f7d8ae36a8cdabc6d3435596085601463b"
+    },
+    "@std/internal@1.0.14": {
+      "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+    },
+    "@std/media-types@1.1.0": {
+      "integrity": "c9d093f0c05c3512932b330e3cc1fe1d627b301db33a4c2c2185c02471d6eaa4"
+    },
+    "@std/path@1.1.6": {
+      "integrity": "c68485c2a4dfbb5ae3cc74fae4e8c4e5d874cf8a8ed12927917235c758b46cbe",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@aurellis/helpers@^1.7.0",
+      "jsr:@std/media-types@^1.1.0",
+      "jsr:@std/path@^1.1.6"
+    ]
+  }
+}

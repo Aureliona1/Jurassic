@@ -1,0 +1,41 @@
+{
+	"test": {
+		"include": [
+			"test/"
+		]
+	},
+	"lint": {
+		"include": [
+			"src/",
+			"mod.ts"
+		],
+		"rules": {
+			"tags": [
+				"jsr"
+			]
+		}
+	},
+	"tasks": {
+		"commit": {
+			"description": "Run pre-commit checks.",
+			"command": "deno doc --lint mod.ts && deno lint && deno test --allow-all"
+		}
+	},
+	"name": "@aurellis/jurassic",
+	"version": "0.1.0",
+	"license": "MIT",
+	"exports": "./mod.ts",
+	"publish": {
+		"include": [
+			"mod.ts",
+			"src/",
+			"README.md",
+			"LICENSE"
+		]
+	},
+	"imports": {
+		"@aurellis/helpers": "jsr:@aurellis/helpers@^1.7.0",
+		"@std/media-types": "jsr:@std/media-types@^1.1.0",
+		"@std/path": "jsr:@std/path@^1.1.6"
+	}
+}
