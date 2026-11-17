@@ -3,20 +3,29 @@
  *
  * @example
  * ```ts
- * import { htmlResponse, Route, Server, staticRoute } from "@aurellis/jurassic";
+ * import { HttpError, Jurassic, json } from "@aurellis/jurassic";
+ * import { logger, serveStatic } from "@aurellis/jurassic/middleware";
  *
- * const server = new Server();
- * server.get.push(
- * 	new Route("/hello", () => htmlResponse("<h1>Hello!</h1>")),
- * 	staticRoute("./public")
- * );
- * server.listen(8000);
+ * const app = new Jurassic();
+ *
+ * app.use(logger());
+ *
+ * app.get("/api/users/:id", ctx => {
+ * 	if (ctx.params.id !== "1") throw new HttpError(404, "No such user.");
+ * 	return json({ id: 1, name: "Name" });
+ * });
+ *
+ * app.post("/api/echo", async ctx => json(await ctx.json()));
+ *
+ * app.use(serveStatic("./public"));
+ *
+ * app.listen(8000);
  * ```
  *
  * @module
  */
-export * from "./src/request.ts";
-export * from "./src/route.ts";
-export * from "./src/server.ts";
-export * from "./src/static.ts";
-export * from "./src/response.ts";
+export { Jurassic } from "./src/app.ts";
+export { Context } from "./src/context.ts";
+export { HttpError } from "./src/http_error.ts";
+export type { Handler, Next, State } from "./src/types.ts";
+export { deleteCookie, file, html, json, noContent, redirect, setCookie, text } from "./src/response.ts";
